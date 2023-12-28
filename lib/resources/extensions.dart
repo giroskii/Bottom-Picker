@@ -24,15 +24,3 @@ extension BottomPickerExtension on BottomPicker {
     }
   }
 }
-
-extension TimeClassExtensions on Time? {
-  DateTime? get toDateTime => this == null
-      ? null
-      : DateTime(
-          DateTime.now().year,
-          DateTime.now().month,
-          DateTime.now().day,
-          this!.hours,
-          this!.minutes,
-        );
-}

@@ -6,7 +6,6 @@ class SimplePicker extends StatelessWidget {
   final List<Text> items;
   final TextStyle textStyle;
   final double itemExtent;
-  final Widget? selectionOverlay;
 
   const SimplePicker({
     Key? key,
@@ -15,7 +14,6 @@ class SimplePicker extends StatelessWidget {
     required this.selectedItemIndex,
     required this.textStyle,
     required this.itemExtent,
-    this.selectionOverlay,
   }) : super(key: key);
 
   @override
@@ -28,8 +26,6 @@ class SimplePicker extends StatelessWidget {
       ),
       child: CupertinoPicker(
         itemExtent: itemExtent,
-        selectionOverlay:
-            selectionOverlay ?? const CupertinoPickerDefaultSelectionOverlay(),
         scrollController: FixedExtentScrollController(
           initialItem: selectedItemIndex,
         ),
