@@ -32,32 +32,7 @@ class RangePicker extends StatefulWidget {
 }
 
 class _RangePickerState extends State<RangePicker> {
-  late DateTime minSecondDate;
-  late DateTime initialSecondDate;
-
-  late DateTime initialFirstDate;
-  late DateTime minFirstDate;
-
-  @override
-  void initState() {
-    super.initState();
-    minFirstDate = widget.minFirstDate ??
-        DateTime.now().add(
-          const Duration(days: 1),
-        );
-    initialFirstDate = widget.initialFirstDateTime ??
-        minFirstDate.add(
-          const Duration(days: 1),
-        );
-    minSecondDate = widget.minSecondDate ??
-        DateTime.now().add(
-          const Duration(days: 1),
-        );
-    initialSecondDate = widget.initialSecondDateTime ??
-        minSecondDate.add(
-          const Duration(days: 1),
-        );
-  }
+  late DateTime initialSecondDate = widget.minSecondDate ?? DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +40,9 @@ class _RangePickerState extends State<RangePicker> {
       children: [
         Expanded(
           child: DatePicker(
-            initialDateTime: initialFirstDate,
+            initialDateTime: widget.initialFirstDateTime,
             maxDateTime: widget.maxFirstDate,
-            minDateTime: minFirstDate,
+            minDateTime: widget.minFirstDate,
             mode: CupertinoDatePickerMode.date,
             onDateChanged: (date) {
               widget.onFirstDateChanged.call(date);
@@ -75,11 +50,6 @@ class _RangePickerState extends State<RangePicker> {
                 widget.onSecondDateChanged.call(date);
                 setState(() {
                   initialSecondDate = date;
-                  minSecondDate = date;
-                });
-              } else {
-                setState(() {
-                  minSecondDate = date;
                 });
               }
             },
@@ -89,10 +59,9 @@ class _RangePickerState extends State<RangePicker> {
         ),
         Expanded(
           child: DatePicker(
-            key: UniqueKey(),
             initialDateTime: initialSecondDate,
             maxDateTime: widget.maxSecondDate,
-            minDateTime: minSecondDate,
+            minDateTime: initialSecondDate,
             mode: CupertinoDatePickerMode.date,
             onDateChanged: widget.onSecondDateChanged,
             dateOrder: widget.dateOrder,

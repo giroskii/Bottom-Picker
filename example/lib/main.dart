@@ -153,7 +153,7 @@ class ExampleApp extends StatelessWidget {
       onSubmit: (index) {
         print(index);
       },
-      buttonAlignment: MainAxisAlignment.start,
+      buttonAlignement: MainAxisAlignment.start,
       displayButtonIcon: false,
       displaySubmitButton: false,
     ).show(context);
@@ -180,9 +180,6 @@ class ExampleApp extends StatelessWidget {
     BottomPicker.date(
       title: 'Set your Birthday',
       dateOrder: DatePickerDateOrder.dmy,
-      initialDateTime: DateTime(1996, 10, 22),
-      maxDateTime: DateTime(1998),
-      minDateTime: DateTime(1980),
       pickerTextStyle: TextStyle(
         color: Colors.blue,
         fontWeight: FontWeight.bold,
@@ -209,7 +206,7 @@ class ExampleApp extends StatelessWidget {
       description: 'Please select a first date and an end date',
       dateOrder: DatePickerDateOrder.dmy,
       minFirstDate: DateTime.now(),
-      initialFirstDate: DateTime.now().add(Duration(days: 1)),
+      minSecondDate: DateTime.now().add(const Duration(days: 1)),
       pickerTextStyle: TextStyle(
         color: Colors.blue,
         fontWeight: FontWeight.bold,
@@ -223,7 +220,7 @@ class ExampleApp extends StatelessWidget {
       descriptionStyle: TextStyle(
         color: Colors.black,
       ),
-      onRangeDateSubmitPressed: (firstDate, secondDate) {
+      onSubmitPressed: (firstDate, secondDate) {
         print(firstDate);
         print(secondDate);
       },
@@ -250,7 +247,7 @@ class ExampleApp extends StatelessWidget {
       descriptionStyle: TextStyle(
         color: Colors.black,
       ),
-      onRangeDateSubmitPressed: (firstDate, secondDate) {
+      onSubmitPressed: (firstDate, secondDate) {
         print(firstDate);
         print(secondDate);
       },
@@ -274,12 +271,6 @@ class ExampleApp extends StatelessWidget {
       },
       bottomPickerTheme: BottomPickerTheme.orange,
       use24hFormat: true,
-      initialTime: Time(
-        minutes: 23,
-      ),
-      maxTime: Time(
-        hours: 17,
-      ),
     ).show(context);
   }
 

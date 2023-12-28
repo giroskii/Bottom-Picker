@@ -39,239 +39,182 @@ To add bottom picker to your project add this line to your pubspec.yaml file
 
 ```yaml
 dependencies:
-	bottom_picker: ^2.3.3
+	bottom_picker: ^2.0.1
 ```
 
 ## Parameters
 
 ```dart
-	///The title of the bottom picker
-  ///it's required for all bottom picker types
-  final String title;
+///The title of the bottom picker
+///it's required for all bottom picker types
+final  String  title;
 
-  ///The description of the bottom picker (displayed below the text)
-  ///by default it's an empty text
-  final String description;
+///The description of the bottom picker (displayed below the text)
+///by default it's an empty text
+final  String  description;
 
-  ///The text style applied on the title
-  ///by default it applies simple text style
-  final TextStyle titleStyle;
+///The text style applied on the title
+///by default it applies simple text style
+final  TextStyle  titleStyle;
 
-  ///The padding applied on the title
-  ///by default it is set with zero values
-  final EdgeInsetsGeometry titlePadding;
+///The text style applied on the description
+///by default it applies simple text style
+final  TextStyle  descriptionStyle;
 
-  ///Title and description alignment
-  ///The default value is `MainAxisAlignment.center`
-  final CrossAxisAlignment titleAlignment;
+///defines whether the bottom picker is dismissable or not
+///by default it's set to false
+final  bool  dismissable;
 
-  ///The text style applied on the description
-  ///by default it applies simple text style
-  final TextStyle descriptionStyle;
+///list of items (List of text) used to create simple item picker (required)
+///and should not be empty or null
+///for date/dateTime/time items parameter is not available
+late  List<Text>?  items;
 
-  ///defines whether the bottom picker is dismissable or not
-  ///by default it's set to false
-  ///
-  final bool dismissable;
+///Nullable function, invoked when navigating between picker items
+///whether it's date picker or simple item picker it will return a value DateTime or int(index)
+late  Function(dynamic)?  onChange;
 
-  ///list of items (List of text) used to create simple item picker (required)
-  ///and should not be empty or null
-  ///
-  ///for date/dateTime/time items parameter is not available
-  ///
-  late List<Text>? items;
+///Nullable function invoked when clicking on submit button
+///if the picker type is date/time/dateTime it will return DateTime value
+///else it will return the index of the selected item
+late  Function(dynamic)?  onSubmit;
 
-  ///Nullable function, invoked when navigating between picker items
-  ///whether it's date picker or simple item picker it will return a value DateTime or int(index)
-  ///
-  late Function(dynamic)? onChange;
+///Invoked when clicking on the close button
+final  Function?  onClose;
 
-  ///Nullable function invoked  when clicking on submit button
-  ///if the picker  type is date/time/dateTime it will return DateTime value
-  ///else it will return the index of the selected item
-  ///
-  late Function(dynamic)? onSubmit;
+///set the theme of the bottom picker (the button theme)
+///possible values
+///{
+///blue,
+///orange,
+///temptingAzure,
+///heavyRain,
+///plumPlate,
+///morningSalad
+///}
+final  BottomPickerTheme  bottomPickerTheme;
 
-  ///Invoked when clicking on the close button
-  ///
-  final Function? onClose;
+///to set a custom button theme color use this list
+///when it's not null it will be applied
+final  List<Color>?  gradientColors;
 
-  ///set the theme of the bottom picker (the button theme)
-  ///possible values
-  ///```
-  ///{
-  ///blue,
-  ///orange,
-  ///temptingAzure,
-  ///heavyRain,
-  ///plumPlate,
-  ///morningSalad
-  ///}
-  ///```
-  final BottomPickerTheme bottomPickerTheme;
+///define the icon color on the button
+///by default it's White
+final  Color  iconColor;
 
-  ///to set a custom button theme color use this list
-  ///when it's not null it will be applied
-  ///
-  final List<Color>? gradientColors;
+///used for simple bottom picker
+///by default it's 0, needs to be in the range [0, this.items.length-1]
+///otherwise an exception will be thrown
+///for date and time picker type this parameter is not available
+late  int  selectedItemIndex;
 
-  ///define the icon color on the button
-  ///by default it's White
-  ///
-  final Color iconColor;
+///The initial date time applied on the date and time picker
+///by default it's null
+DateTime?  initialDateTime;
 
-  ///used for simple bottom picker
-  ///by default it's 0, needs to be in the range [0, this.items.length-1]
-  ///otherwise an exception will be thrown
-  ///for date and time picker type this parameter is not available
-  ///
-  late int selectedItemIndex;
+///The gap between two minutes
+///by default it's 1 minute
+int?  minuteInterval;
 
-  ///The initial date time applied on the date and time picker
-  ///by default it's null
-  ///
-  DateTime? initialDateTime;
+///the max date time on the date picker
+///by default it's null
+DateTime?  maxDateTime;
 
-  ///The initial time set in the time picker widget
-  ///required only when using the `time` constructor
-  Time? initialTime;
+///the minimum date & time applied on the date picker
+///by default it's null
+DateTime?  minDateTime;
 
-  ///The max time can be set in the time picker widget
-  Time? maxTime;
+///define whether the time uses 24h or 12h format
+///by default it's false (12h format)
+late  bool  use24hFormat;
 
-  ///The min time can be set in the time picker widget
-  Time? minTime;
+///the text that will be applied to the button
+///if the text is null the button will be rendered with an icon
+final  String?  buttonText;
 
-  ///The gap between two minutes
-  ///by default it's 1 minute
-  int? minuteInterval;
+///the button text style, will be applied on the button's text
+final  TextStyle?  buttonTextStyle;
 
-  ///the max date time on the date picker
-  ///by default it's null
-  DateTime? maxDateTime;
+///display button icon
+///by default it's true
+///if you want to display a text you can set [displayButtonIcon] to false
+final  bool  displayButtonIcon;
 
-  ///the minimum date & time applied on the date picker
-  ///by default it's null
-  ///
-  DateTime? minDateTime;
+///a single color will be applied to the button instead of the gradient
+///themes
+final  Color?  buttonSingleColor;
 
-  ///define whether the time uses 24h or 12h format
-  ///by default it's false (12h format)
-  ///
-  late bool use24hFormat;
+///the bottom picker background color,
+///by default it's white
+final  Color  backgroundColor;
 
-  ///the text that will be applied to the button
-  ///if the text is null the button will be rendered with an icon
-  final String? buttonText;
+///date order applied on date picker or date time picker
+///by default it's YYYY/MM/DD
+late  DatePickerDateOrder?  dateOrder;
 
-  ///the padding that will be applied to the button
-  ///if the padding is null the button will be rendered null
-  final double? buttonPadding;
+///the picker text style applied on all types of bottom picker
+///by default `TextStyle(fontSize: 14)`
+final  TextStyle  pickerTextStyle;
 
-  ///the width that will be applied to the button
-  ///if the buttonWidth is null the button will be rendered with null
-  final double? buttonWidth;
+///define the picker item extent available only for list items picker
+///by default it's 35
+late  double  itemExtent;
 
-  ///the button text style, will be applied on the button's text
-  final TextStyle? buttonTextStyle;
+///indicate whether the close icon will be rendred or not
+/// by default `displayCloseIcon = true`
+final  bool  displayCloseIcon;
 
-  ///display button icon
-  ///by default it's true
-  ///if you want to display a text you can set [displayButtonIcon] to false
-  final bool displayButtonIcon;
+///the close icon color
+///by default `closeIconColor = Colors.black`
+final  Color  closeIconColor;
 
-  ///a single color will be applied to the button instead of the gradient
-  ///themes
-  ///
-  final Color? buttonSingleColor;
+///the layout orientation of the bottom picker
+///by default the orientation is set to LTR
+///LAYOUT_ORIENTATION.ltr,
+///LAYOUT_ORIENTATION.rtl
+final  LayoutOrientation  layoutOrientation;
 
-  ///the bottom picker background color,
-  ///by default it's white
-  ///
-  final Color backgroundColor;
+///THe alignement of the bottom picker button
+///by default it's `MainAxisAlignment.center`
+final  MainAxisAlignment  buttonAlignement;
 
-  ///date order applied on date picker or date time picker
-  ///by default it's YYYY/MM/DD
-  late DatePickerDateOrder? dateOrder;
+///bottom picker main widget height
+///if it's null the bottom picker will get the height from
+///[bottomPickerHeight] extension on context
+final  double?  height;
 
-  ///the picker text style applied on all types of bottom picker
-  ///by default `TextStyle(fontSize: 14)`
-  final TextStyle pickerTextStyle;
+///indicates if the submit button will be displayed or not
+///by default the submit button is shown
+late  bool  displaySubmitButton;
 
-  ///define the picker item extent available only for list items picker
-  ///by default it's 35
-  late double itemExtent;
+///invoked when pressing on the submit button when using range picker
+///it return two dates (first date, end date)
+///required when using [BottomPicker.range]
+late  Function(DateTime, DateTime)?  onSubmitPressed;
 
-  ///indicate whether the close icon will be rendred or not
-  /// by default `displayCloseIcon = true`
-  final bool displayCloseIcon;
+///the minimum first date in the date range picker
+///not required if null no minimum will be set in the date picker
+DateTime?  minFirstDate;
 
-  ///the close icon color
-  ///by default `closeIconColor = Colors.black`
-  final Color closeIconColor;
+///the minimum second date in the date range picker
+///not required if null no minimum will be set in the date picker
+DateTime?  minSecondDate;
 
-  ///the close icon size
-  ///by default `closeIconSize = 20`
-  final double closeIconSize;
+///the maximum first date in the date range picker
+///not required if null no minimum will be set in the date picker
+DateTime?  maxFirstDate;
 
-  ///the layout orientation of the bottom picker
-  ///by default the orientation is set to LTR
-  ///```
-  ///LAYOUT_ORIENTATION.ltr,
-  ///LAYOUT_ORIENTATION.rtl
-  ///```
-  final LayoutOrientation layoutOrientation;
+///the maximum second date in the date range picker
+///not required if null no minimum will be set in the date picker
+DateTime?  maxSecondDate;
 
-  ///THe alignment of the bottom picker button
-  ///by default it's `MainAxisAlignment.center`
-  final MainAxisAlignment buttonAlignment;
+///the initial first date in the date range picker
+///not required if null no minimum will be set in the date picker
+DateTime?  initialFirstDate;
 
-  ///The alignment of the bottom picker button text
-  ///by default it's `MainAxisAlignment.center`
-  final MainAxisAlignment buttonTextAlignment;
-
-  ///bottom picker main widget height
-  ///if it's null the bottom picker will get the height from
-  ///[bottomPickerHeight] extension on context
-  final double? height;
-
-  ///indicates if the submit button will be displayed or not
-  ///by default the submit button is shown
-  late bool displaySubmitButton;
-
-  ///invoked when pressing on the submit button when using range picker
-  ///it return two dates (first date, end date)
-  ///required when using [BottomPicker.range]
-  late Function(DateTime, DateTime)? onRangeDateSubmitPressed;
-
-  ///the minimum first date in the date range picker
-  ///not required if null no minimum will be set in the date picker
-  DateTime? minFirstDate;
-
-  ///the minimum second date in the date range picker
-  ///not required if null no minimum will be set in the date picker
-  DateTime? minSecondDate;
-
-  ///the maximum first date in the date range picker
-  ///not required if null no minimum will be set in the date picker
-  DateTime? maxFirstDate;
-
-  ///the maximum second date in the date range picker
-  ///not required if null no minimum will be set in the date picker
-  DateTime? maxSecondDate;
-
-  ///the initial first date in the date range picker
-  ///not required if null no minimum will be set in the date picker
-  DateTime? initialFirstDate;
-
-  ///the initial last date in the date range picker
-  ///not required if null no minimum will be set in the date picker
-  DateTime? initialSecondDate;
-
-  /// A widget overlaid on the picker to highlight the currently selected entry.
-  /// The [selectionOverlay] widget drawn above the [CupertinoPicker]'s picker
-  /// wheel.
-  Widget? selectionOverlay;
+///the initial last date in the date range picker
+///not required if null no minimum will be set in the date picker
+DateTime?  initialSecondDate;
 ```
 
 ## Examples
@@ -318,27 +261,21 @@ Time picker
 ```dart
 
 BottomPicker.time(
-      title: 'Set your next meeting time',
-      titleStyle: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 15,
-        color: Colors.orange,
-      ),
-      onSubmit: (index) {
-        print(index);
-      },
-      onClose: () {
-        print('Picker closed');
-      },
-      bottomPickerTheme: BottomPickerTheme.orange,
-      use24hFormat: true,
-      initialTime: Time(
-        minutes: 23,
-      ),
-      maxTime: Time(
-        hours: 17,
-      ),
-  ).show(context);
+	title:  "Set your next meeting time",
+	titleStyle:  TextStyle(
+		fontWeight:  FontWeight.bold,
+		fontSize:  15,
+		color:  Colors.orange
+	),
+	onSubmit: (index) {
+		print(index);
+	},
+	onClose: () {
+		print("Picker closed");
+	},
+	bottomPickerTheme:  BOTTOM_PICKER_THEME.orange,
+	use24hFormat:  true
+).show(context);
 
 
 
