@@ -78,8 +78,7 @@ class BottomPickerButton extends StatelessWidget {
           onTap: () {
             onClick.call();
           },
-          child: Flexible(
-              child: Container(
+          child: Container(
             height: 60,
             width: MediaQuery.of(context).size.width * 0.5,
             decoration: BoxDecoration(
@@ -115,7 +114,7 @@ class BottomPickerButton extends StatelessWidget {
                 ],
               ),
             ),
-          )),
+          ),
         ),
       ],
     );
